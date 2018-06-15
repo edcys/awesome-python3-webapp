@@ -27,7 +27,7 @@ async def select(sql, args, size=None):
     with (await __pool) as conn:
         cur = await conn.cursor(aiomysql.DictCursor)
         # SQL语句的占位符是?, 而MySQL的占位符是%s
-        await cur.execute(sql.repalce('?','%s'), args or ())
+        await cur.execute(sql.replace('?','%s'), args or ())
         if size:
             rs = await cur.fetchmany(size)
         else:
