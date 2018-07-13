@@ -32,9 +32,9 @@ async def select(sql, args, size=None):
             rs = await cur.fetchmany(size)
         else:
             rs = await cur.fetchall()
-            await cur.close()
-            logging.info('rows returned: %s' % len(rs))
-            return rs
+        await cur.close()
+        logging.info('rows returned: %s' % len(rs))
+        return rs
 
 async def execute(sql, args):
     log(sql)
